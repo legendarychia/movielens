@@ -1,78 +1,19 @@
-namespace aa.movielens.db.hdb.pal;
-
-using "aa.movielens.db.data::ratings" as ratings;
-
-context apriori {
-    entity parameter {
-        PARAM_NAME   : String(100);
-        INT_VALUE    : Integer;
-        DOUBLE_VALUE : Double;
-        STRING_VALUE : String(100);
-    };
-
-    table type tt_parameter {
-        PARAM_NAME   : String(100);
-        INT_VALUE    : Integer;
-        DOUBLE_VALUE : Double;
-        STRING_VALUE : String(100);
-    };
-
-    entity rules {
-        PRERULE    : String(500);
-        POSTRULE   : String(500);
-        SUPPORT    : Double;
-        CONFIDENCE : Double;
-        LIFT       : Double;
-    };
-
-    table type tt_rules {
-        PRERULE    : String(500);
-        POSTRULE   : String(500);
-        SUPPORT    : Double;
-        CONFIDENCE : Double;
-        LIFT       : Double;
-    };
-
-    entity pmml {
-        ID        : Integer;
-        PMMLMODEL : String(5000);
-    };
-
-    table type tt_pmml {
-        ID        : Integer;
-        PMMLMODEL : String(5000);
-    };
-
-    view movielens_dataset as
-        select from ratings
-        {
-            USERID,
-            MOVIEID
-        };
-
-    table type tt_movielens_dataset {
-        USERID  : Integer;
-        MOVIEID : Integer;
-    };
-
-    table type tt_movielens_collaborative_result {
-        USERID  : Integer;
-        RANK    : Integer;
-        MOVIEID : Integer;
-        SCORE   : Double;
-        TITLE   : String(255);
-        GENRES  : String(255);
-        IMDBID  : Integer;
-        TMDBID  : Integer;
-    };
-    table type tt_movielens_contentbased_result {
-        MOVIEID       : Integer;
-        RANK          : Integer;
-        SIMILAR_MOVIE : Integer;
-        SCORE         : Double;
-        TITLE         : String(255);
-        GENRES        : String(255);
-        IMDBID        : Integer;
-        TMDBID        : Integer;
-    };
-};
+view "aa.movielens.db.hdb.pal.views::apriori_contentbased" as
+select
+  t1.movieid, rank, similar_movie, score, title, genres, imdbid, tmdbid    
+from (
+  select
+      t1.movieid
+    , row_number() over(partition by t1.movieid order by t1.score desc, t1.consequent desc ) as rank
+    , cast(t1.consequent as integer) as similar_movie
+    , t1.score
+  from (
+    select movieid, rules.postrule as consequent, rules.confidence as score
+    from "aa.movielens.db.data::movies" as input_data
+    left outer join "aa.movielens.db.hdb.pal::apriori.rules" rules on (cast (input_data.movieid as varchar(500)) = rules.prerule)
+    where rules.postrule is not null
+  ) t1
+) t1
+left outer join "aa.movielens.db.data::movies" movies on movies.movieid = t1.similar_movie
+left outer join "aa.movielens.db.data::links"  links  on links.movieid  = t1.similar_movie
+where t1.rank <= 5;
