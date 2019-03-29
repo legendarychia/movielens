@@ -97,7 +97,6 @@
 			"type": "sap.ui.model.json.JSONModel",
 			"preload": true,
 			"uri": "model/config.json"
-
 		},
 		"resources": {
 			"css": [{
