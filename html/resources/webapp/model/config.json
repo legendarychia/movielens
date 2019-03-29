@@ -11,7 +11,8 @@
           "MINIMUMCONFIDENCE": 0.05,
           "MINIMUMPREDICTIVEPOWER": 0.1
         }
-      },
+   
+},
       "results": {
         "url": "/xsjs/apl/recommendation_results.xsjs",
         "method": "POST",

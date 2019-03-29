@@ -27,4 +27,5 @@ sap.ui.define([
 			this.setModel(models.createDeviceModel(), "device");
 		}
 	});
+	
 });
