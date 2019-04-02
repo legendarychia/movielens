@@ -6,11 +6,13 @@ sap.ui.define([
   "sap/ui/model/FilterOperator",
   "sap/ui/model/FilterType",
   "movielens/html/model/formatter"
-], function(Controller, Filter, FilterOperator, FilterType, formatter) {
+],
+
+function(Controller, Filter, FilterOperator, FilterType, formatter ) {
   "use strict";
   return Controller.extend("movielens.html.controller.demo", {
     formatter: formatter,
-
+   
     handlePressOpenMenu: function(oEvent) {
       var oButton = oEvent.getSource();
       // create menu only once
@@ -66,4 +68,5 @@ sap.ui.define([
       }), FilterType.Application);
     }
   });
+
 });
