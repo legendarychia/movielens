@@ -69,7 +69,7 @@
 			"sap.uxap": {}
 		}
 	},
-
+	
 	"contentDensities": {
 		"compact": true,
 		"cozy": true
@@ -116,7 +116,9 @@
 			"routes": [{
 				"name": "demo",
 				"pattern": "",
-				"target": "demo"
+				"target": "demo",
+				"view":"Page",
+				"targetAggregation":"pages"
 			}],
 			"targets": {
 				"demo": {

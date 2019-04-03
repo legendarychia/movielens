@@ -24,7 +24,11 @@
 						height : "100%",
 						name : "movielens.html"
 					})
-				}).placeAt("content");
+				})
+				sap.ui.xmlview({
+					viewName:"movielens.html.view.demo"
+				})
+				.placeAt("content");
 				
 
 			});

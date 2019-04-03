@@ -6,7 +6,9 @@
     "destination": "movielens_api",
     "csrfProtection": true,
     "authenticationType": "none"
-  }, {
+  }, 
+  
+  {
     "source": "/xsodata/(.*)(.xsodata)",
     "destination": "movielens_api",
     "csrfProtection": true,

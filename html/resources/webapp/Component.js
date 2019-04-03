@@ -16,7 +16,11 @@ sap.ui.define([
 		 * @public
 		 * @override
 		 */
+	
+	
 		init: function () {
+		
+              
 			// call the base component's init function
 			UIComponent.prototype.init.apply(this, arguments);
 
@@ -25,7 +29,16 @@ sap.ui.define([
 
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
+		},
+		createContent:function(){
+			var oView = sap.ui.view({
+				id:"app",
+				viewName:"ui5.view.App",
+				type:"JS",
+				viewData:{component:this}
+			});
 		}
+		
 	});
 	
 });
