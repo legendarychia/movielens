@@ -104,8 +104,10 @@
 			}]
 		},
 		"routing": {
+	
 			"config": {
 				"routerClass": "sap.m.routing.Router",
+				"targetsClass":"sap.m.routing.Targets",
 				"viewType": "XML",
 				"async": true,
 				"viewPath": "movielens.html.view",
@@ -118,20 +120,59 @@
 				"pattern": "",
 				"target": "demo",
 				"view":"Page",
-				"targetAggregation":"pages"
+				"targetAggregation":"pages",
+				"greedy":false
+			},
+			{
+				"name":"xsodata.collaborative",
+				"pattern": "",
+				"target": ["xsodata.collaborative"],
+				"view":"Page",
+				"targetAggregation":"pages",
+				"greedy":false
+			},
+			{
+				"name":"xsodata.contentbased",
+				"pattern": "",
+				"target": ["xsodata.contentbased"],
+				"view":"Page",
+				"targetAggregation":"pages",
+				"greedy":false
+				
+			},
+			{
+				"name":"xsjs.apl_recommendation",
+				"pattern": "",
+				"target": ["xsjs.apl_recommendation"],
+				"view":"Page",
+				"targetAggregation":"pages",
+				"greedy":false
+			},
+			{
+				"name":"xsjs.pal_apriori",
+				"pattern": "",
+				"target": ["xsjs.pal_apriori"],
+				"view":"Page",
+				"targetAggregation":"pages",
+				"greedy":false
 			}],
+			
 			"targets": {
 				"demo": {
 					"clearAggregation": true,
-					"viewName": "demo"
+					"viewName": "demo",
+					"viewLevel":1
 				},
 				"xsodata.collaborative": {
 					"clearAggregation": true,
-					"viewName": "xsodata.collaborative"
+					"viewName": "xsodata.collaborative",
+					"viewLevel":2
+					
 				},
 				"xsodata.contentbased": {
 					"clearAggregation": true,
 					"viewName": "xsodata.contentbased"
+					
 				},
 				"xsjs.apl_recommendation": {
 					"clearAggregation": true,
@@ -143,5 +184,6 @@
 				}
 			}
 		}
+
 	}
 }

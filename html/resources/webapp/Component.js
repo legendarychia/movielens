@@ -22,14 +22,23 @@ sap.ui.define([
 		
               
 			// call the base component's init function
-			UIComponent.prototype.init.apply(this, arguments);
-
+			sap.ui.core.UIComponent.prototype.init.apply(this, arguments);
+			
+			
 			// enable routing
 			this.getRouter().initialize();
+			
+
 
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
+			
+			this.getOwnerComponent.initialize();
+			this.getTargets.initialize();
+			this.getTargets().display("demo");
 		},
+	
+	
 		createContent:function(){
 			var oView = sap.ui.view({
 				id:"app",
@@ -38,7 +47,8 @@ sap.ui.define([
 				viewData:{component:this}
 			});
 		}
-		
+
+	
 	});
 	
 });
