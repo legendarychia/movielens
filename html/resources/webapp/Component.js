@@ -36,9 +36,10 @@ sap.ui.define([
 			this.getOwnerComponent.initialize();
 			this.getTargets.initialize();
 			this.getTargets().display("demo");
+		
+			
 		},
-	
-	
+		
 		createContent:function(){
 			var oView = sap.ui.view({
 				id:"app",

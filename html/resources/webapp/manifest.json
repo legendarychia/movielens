@@ -117,7 +117,7 @@
 			},
 			"routes": [{
 				"name": "demo",
-				"pattern": "",
+				"pattern": "demo/item",
 				"target": "demo",
 				"view":"Page",
 				"targetAggregation":"pages",
@@ -125,7 +125,7 @@
 			},
 			{
 				"name":"xsodata.collaborative",
-				"pattern": "",
+				"pattern": "demo/item",
 				"target": ["xsodata.collaborative"],
 				"view":"Page",
 				"targetAggregation":"pages",
@@ -133,7 +133,7 @@
 			},
 			{
 				"name":"xsodata.contentbased",
-				"pattern": "",
+				"pattern": "demo/item",
 				"target": ["xsodata.contentbased"],
 				"view":"Page",
 				"targetAggregation":"pages",
@@ -142,7 +142,7 @@
 			},
 			{
 				"name":"xsjs.apl_recommendation",
-				"pattern": "",
+				"pattern": "demo/item",
 				"target": ["xsjs.apl_recommendation"],
 				"view":"Page",
 				"targetAggregation":"pages",
@@ -150,7 +150,7 @@
 			},
 			{
 				"name":"xsjs.pal_apriori",
-				"pattern": "",
+				"pattern": "demo/item",
 				"target": ["xsjs.pal_apriori"],
 				"view":"Page",
 				"targetAggregation":"pages",

@@ -33,7 +33,7 @@ function(Controller, Filter, FilterOperator, FilterType, formatter ) {
       }
       var to = oEvent.getParameter("item").data("to");
       if (to) {
-        this.getOwnerComponent().getTargets().display(to );
+        this.getOwnerComponent().getTargets().display(to);
       }
 
     },

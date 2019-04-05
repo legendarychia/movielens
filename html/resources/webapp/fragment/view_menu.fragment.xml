@@ -3,7 +3,7 @@
   <u:Menu itemSelect="handleMenuItemPress">
     <u:MenuItem text="View Results with XS OData">
       <u:Menu>
-        <u:MenuItem xmlns="sap.m" text="Collaborative Filtering" custom:to="xsodata.collaborative" />
+        <button xmlns="sap.m" text="Collaborative Filtering" custom:to="xsodata.collaborative" press="onPress" />
         <u:MenuItem xmlns="sap.m" text="Content-Based Filtering" custom:to="xsodata.contentbased" />
       </u:Menu>
     </u:MenuItem>
