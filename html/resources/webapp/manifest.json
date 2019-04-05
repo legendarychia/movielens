@@ -117,7 +117,7 @@
 			},
 			"routes": [{
 				"name": "demo",
-				"pattern": "demo/item",
+				"pattern": "",
 				"target": "demo",
 				"view":"Page",
 				"targetAggregation":"pages",
