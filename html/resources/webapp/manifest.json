@@ -125,7 +125,7 @@
 			},
 			{
 				"name":"xsodata.collaborative",
-				"pattern": "demo/item",
+				"pattern": "",
 				"target": ["xsodata.collaborative"],
 				"view":"Page",
 				"targetAggregation":"pages",
@@ -133,7 +133,7 @@
 			},
 			{
 				"name":"xsodata.contentbased",
-				"pattern": "demo/item",
+				"pattern": "",
 				"target": ["xsodata.contentbased"],
 				"view":"Page",
 				"targetAggregation":"pages",
@@ -142,7 +142,7 @@
 			},
 			{
 				"name":"xsjs.apl_recommendation",
-				"pattern": "demo/item",
+				"pattern": "",
 				"target": ["xsjs.apl_recommendation"],
 				"view":"Page",
 				"targetAggregation":"pages",
@@ -150,7 +150,7 @@
 			},
 			{
 				"name":"xsjs.pal_apriori",
-				"pattern": "demo/item",
+				"pattern": "",
 				"target": ["xsjs.pal_apriori"],
 				"view":"Page",
 				"targetAggregation":"pages",
@@ -160,14 +160,13 @@
 			"targets": {
 				"demo": {
 					"clearAggregation": true,
-					"viewName": "demo",
-					"viewLevel":1
+					"viewName": "demo"
+				
 				},
 				"xsodata.collaborative": {
 					"clearAggregation": true,
-					"viewName": "xsodata.collaborative",
-					"viewLevel":2
-					
+					"viewName": "xsodata.collaborative"
+				
 				},
 				"xsodata.contentbased": {
 					"clearAggregation": true,

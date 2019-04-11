@@ -5,37 +5,47 @@ sap.ui.define([
   "sap/ui/model/Filter",
   "sap/ui/model/FilterOperator",
   "sap/ui/model/FilterType",
-  "movielens/html/model/formatter"
+  "movielens/html/model/formatter",
+  "sap/ui/core/routing/Router"
 ],
-
-function(Controller, Filter, FilterOperator, FilterType, formatter ) {
+function(Controller, Filter, FilterOperator, FilterType, formatter,Router ) {
   "use strict";
   return Controller.extend("movielens.html.controller.demo", {
     formatter: formatter,
-   
     handlePressOpenMenu: function(oEvent) {
       var oButton = oEvent.getSource();
       // create menu only once
       if (!this._menu) {
         this._menu = sap.ui.xmlfragment("movielens.html.fragment.view_menu", this);
         this.getView().addDependent(this._menu);
+     
       }
       var eDock = sap.ui.core.Popup.Dock;
       this._menu.open(this._bKeyboard, oButton, eDock.BeginTop, eDock.BeginBottom, oButton);
+	  
+	   
+    },
+    getTargets :function(){
+    return sap.ui.core.UIComponent.getTargets(this);	
     },
     getRouter :function(){
     return sap.ui.core.UIComponent.getRouterFor(this);	
     },
-    
+	getOwnerComponent: function () {
+        var sComponentId = sap.ui.core.Component.getOwnerIdFor(this.getView());
+        return sap.ui.component("myComp");
+    },
+	
+  
     handleMenuItemPress: function(oEvent) {
-      if (oEvent.getParameter("item").getSubmenu()) {
+        if (oEvent.getParameter("item").getSubmenu()) {
         return;
       }
       var to = oEvent.getParameter("item").data("to");
-      if (to) {
-        this.getOwnerComponent().getTargets().display(to);
+      if (to !== null) {
+			this.getOwnerComponent().getTargets().display(to);
       }
-
+ 
     },
     onSuggestionSubmit: function(oEvent) {
       var type = oEvent.getSource().data("type");

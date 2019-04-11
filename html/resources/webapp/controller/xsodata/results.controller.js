@@ -3,14 +3,16 @@ sap.ui.define([
   "sap/ui/model/Filter",
   "sap/ui/model/FilterOperator",
   "sap/ui/model/FilterType",
-  "movielens/html/model/formatter"
-], function(Controller, Filter, FilterOperator, FilterType, formatter) {
+  "movielens/html/model/formatter",
+  "sap/ui/model/json/JSONModel",
+  "jquery.sap.global"
+], function(Controller, Filter, FilterOperator, FilterType, formatter,JSONModel,jquery) {
   "use strict";
-
   return Controller.extend("movielens.html.controller.xsodata.results", {
     onInit: function() {
+    
       if (!this.getView().getModel()) {
-        this.getView().setModel(new sap.ui.model.json.JSONModel());
+       this.getView().setModel(new sap.ui.model.json.JSONModel());
       }
       this.selectItem(null, null);
     },
