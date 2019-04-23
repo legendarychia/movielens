@@ -31,9 +31,9 @@ function(Controller, Filter, FilterOperator, FilterType, formatter,Router ) {
     getRouter :function(){
     return sap.ui.core.UIComponent.getRouterFor(this);	
     },
-	getOwnerComponent: function () {
+	getComponent: function () {
         var sComponentId = sap.ui.core.Component.getOwnerIdFor(this.getView());
-        return sap.ui.component("myComp");
+        return sap.ui.component(sComponentId);
     },
 	
   

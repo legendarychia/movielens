@@ -38,42 +38,26 @@ sap.ui.define([
 
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
-			
-			this.getTargets().display();
-			this.getOwnerComponent().getModel();
-		
+	
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			
-		
+			var target = this.getOwnerComponent().getTargets();
 			
-	
-		var oModel = new JSONModel(jquery.sap.getModulePath("movielens.html.model.config"));
-		this.getView().setModel(oModel);
+			var model = this.getOwnerComponent().getModel("device");
+			
+    	
 			
 		},
-				
-			onExit: function() {
-		      if (this._oDialog) {
-		        this._oDialog.destroy();
-		      }
-		    },
+			     onBeforeRendering: function(){
+			     var oComponent = this.getOwnerComponent();
+			     oComponent.getModel("device");
+			     },
 		
-		    getRouter: function() {
+		 getRouter: function() {
 		      return sap.ui.core.UIComponent.getRouterFor(this);
 		    },
 		    
-		  beginButton: new Button({
-          text: 'Submit',
-          enabled: true,
-          press: function() {
-            //Here I am calling the view
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.getTargets().display("xsodata.collaborative", {
-              fromTarget: "demo"
-            });
-            dialog.close();
-          }
-        }),
+
         
 		createContent:function(){
 			var oView = sap.ui.view({
@@ -82,7 +66,20 @@ sap.ui.define([
 				type:"JS",
 				viewData:{component:this}
 			});
-		}
+		},
+		
+		beginButton: new Button({
+	      text: 'Submit',
+	      enabled: true,
+	      press: function() {
+	        //Here I am calling the view
+	        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+	        oRouter.getTargets().display("xsodata.collaborative", {
+	          fromTarget: "demo"
+	        });
+	        dialog.close();
+	      }
+	    })
     
 
 	});
