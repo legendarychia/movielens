@@ -23,14 +23,16 @@
 		<script>
   
 			sap.ui.getCore().attachInit(function() {
-				
+				var oComp =  sap.ui.getCore().createComponent({
+						name:"apps.html",
+						id:"myComp",
+						height:"100%",
+						propagateModel:true
+					});
 				new sap.m.Shell({
 	 
 					app: new sap.ui.core.ComponentContainer({
-						id:"myComp",
-						height : "100%",
-						name : "movielens.html",
-						propagateModel:true
+					component:oComp
 					}).placeAt("content")
 				});
 				
